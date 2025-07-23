@@ -77,17 +77,14 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className={`min-h-screen flex items-center justify-center relative overflow-hidden ${
-        isDark ? 'bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900' 
-               : 'bg-gradient-to-br from-blue-50 via-white to-purple-50'
-      }`}
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black"
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className={`absolute rounded-full ${isDark ? 'bg-blue-400/10' : 'bg-blue-200/20'}`}
+            className="absolute rounded-full bg-yellow-400/10"
             style={{
               width: Math.random() * 300 + 50,
               height: Math.random() * 300 + 50,
@@ -103,6 +100,27 @@ const HeroSection = () => {
               duration: Math.random() * 10 + 10,
               repeat: Infinity,
               ease: "easeInOut",
+            }}
+          />
+        ))}
+        
+        {/* Additional yellow accent particles */}
+        {[...Array(10)].map((_, i) => (
+          <motion.div
+            key={`accent-${i}`}
+            className="absolute w-2 h-2 bg-yellow-500 rounded-full"
+            style={{
+              left: Math.random() * 100 + '%',
+              top: Math.random() * 100 + '%',
+            }}
+            animate={{
+              opacity: [0, 1, 0],
+              scale: [0, 1, 0],
+            }}
+            transition={{
+              duration: Math.random() * 3 + 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
             }}
           />
         ))}
@@ -123,9 +141,7 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className={`text-lg md:text-xl font-light italic ${
-                  isDark ? 'text-blue-300' : 'text-blue-600'
-                } max-w-3xl mx-auto`}
+                className="text-lg md:text-xl font-light italic text-yellow-400 max-w-3xl mx-auto"
               >
                 "{funnyQuotes[currentQuote]}"
               </motion.p>
@@ -139,7 +155,7 @@ const HeroSection = () => {
             transition={{ delay: 0.2 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
           >
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent gradient-text">
               {personalInfo.name}
             </span>
           </motion.h1>
@@ -154,7 +170,7 @@ const HeroSection = () => {
             <h2 className="text-xl md:text-3xl lg:text-4xl font-semibold mb-4">
               <TypingAnimation
                 texts={personalInfo.titles}
-                className={isDark ? 'text-gray-300' : 'text-gray-700'}
+                className="text-yellow-200"
               />
             </h2>
           </motion.div>
@@ -173,7 +189,7 @@ const HeroSection = () => {
               <Button
                 onClick={handleDownloadResume}
                 size="lg"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                className="interactive-button px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 📄 Download Resume
               </Button>
@@ -183,7 +199,6 @@ const HeroSection = () => {
               whileHover={{ 
                 scale: 1.05, 
                 y: -2,
-                boxShadow: "0 10px 40px rgba(59, 130, 246, 0.3)"
               }}
               whileTap={{ scale: 0.95 }}
             >
@@ -191,11 +206,7 @@ const HeroSection = () => {
                 onClick={handleScheduleMeet}
                 variant="outline"
                 size="lg"
-                className={`px-8 py-4 text-lg font-semibold rounded-full border-2 transition-all duration-300 ${
-                  isDark 
-                    ? 'border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-gray-900' 
-                    : 'border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white'
-                } shadow-lg hover:shadow-xl`}
+                className="px-8 py-4 text-lg font-semibold rounded-full border-2 border-yellow-500 text-yellow-400 hover:bg-yellow-500 hover:text-black transition-all duration-300 shadow-lg hover:shadow-xl glow-pulse"
               >
                 📅 Schedule a Meet
               </Button>
@@ -212,16 +223,12 @@ const HeroSection = () => {
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className={`w-6 h-10 border-2 rounded-full ${
-                isDark ? 'border-blue-400' : 'border-blue-600'
-              } flex justify-center`}
+              className="w-6 h-10 border-2 border-yellow-500 rounded-full flex justify-center glow-pulse"
             >
               <motion.div
                 animate={{ y: [0, 12, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className={`w-1 h-3 rounded-full mt-2 ${
-                  isDark ? 'bg-blue-400' : 'bg-blue-600'
-                }`}
+                className="w-1 h-3 rounded-full mt-2 bg-yellow-500"
               />
             </motion.div>
           </motion.div>
