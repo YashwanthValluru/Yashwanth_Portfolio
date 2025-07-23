@@ -38,9 +38,7 @@ const Portfolio = () => {
   }, []);
 
   return (
-    <div className={`min-h-screen transition-colors duration-500 ${
-      isDark ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
-    }`}>
+    <div className="min-h-screen transition-colors duration-500 bg-black text-yellow-100">
       <Navigation activeSection={activeSection} />
       
       <motion.div
