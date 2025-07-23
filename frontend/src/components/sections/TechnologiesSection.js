@@ -67,7 +67,7 @@ const TechnologiesSection = () => {
   return (
     <section
       id="technologies"
-      className={`py-20 ${isDark ? 'bg-gray-900' : 'bg-white'} transition-colors duration-500`}
+      className="py-20 bg-black transition-colors duration-500"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -78,11 +78,11 @@ const TechnologiesSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold">
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent gradient-text">
               Technologies I've Worked On ⚡
             </span>
           </h2>
-          <p className={`mt-4 text-lg ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          <p className="mt-4 text-lg text-yellow-200">
             My technical arsenal for building scalable, cloud-ready solutions
           </p>
         </motion.div>
@@ -93,7 +93,7 @@ const TechnologiesSection = () => {
               key={section.key}
               title={section.title}
               techs={technologies[section.key]}
-              isDark={isDark}
+              isDark={true}
               delay={index * 0.1}
             />
           ))}
@@ -116,18 +116,12 @@ const TechnologiesSection = () => {
             <motion.div
               key={index}
               whileHover={{ scale: 1.05 }}
-              className={`text-center p-6 rounded-xl ${
-                isDark 
-                  ? 'bg-gray-800 border border-gray-700' 
-                  : 'bg-gray-50 border border-gray-200'
-              }`}
+              className="interactive-card text-center p-6 rounded-xl"
             >
-              <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <div className="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
                 {stat.number}
               </div>
-              <div className={`text-sm mt-2 ${
-                isDark ? 'text-gray-400' : 'text-gray-600'
-              }`}>
+              <div className="text-sm mt-2 text-yellow-200">
                 {stat.label}
               </div>
             </motion.div>
