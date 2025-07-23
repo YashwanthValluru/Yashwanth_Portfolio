@@ -28,11 +28,7 @@ const Navigation = ({ activeSection }) => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b transition-all duration-300 ${
-        isDark 
-          ? 'bg-gray-900/80 border-gray-700' 
-          : 'bg-white/80 border-gray-200'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b transition-all duration-300 bg-black/90 border-yellow-500/20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -42,7 +38,7 @@ const Navigation = ({ activeSection }) => {
             className="font-bold text-xl cursor-pointer"
             onClick={() => scrollToSection('hero')}
           >
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
               YVR
             </span>
           </motion.div>
@@ -53,12 +49,10 @@ const Navigation = ({ activeSection }) => {
               <motion.button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                className={`nav-item px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   activeSection === item.id
-                    ? 'text-blue-600'
-                    : isDark
-                    ? 'text-gray-300 hover:text-white'
-                    : 'text-gray-700 hover:text-gray-900'
+                    ? 'text-yellow-400'
+                    : 'text-yellow-200 hover:text-yellow-400'
                 }`}
                 whileHover={{ y: -2 }}
                 whileTap={{ y: 0 }}
@@ -72,9 +66,9 @@ const Navigation = ({ activeSection }) => {
               variant="ghost"
               size="sm"
               onClick={toggleTheme}
-              className="p-2"
+              className="p-2 text-yellow-400 hover:text-yellow-500 hover:bg-yellow-500/10"
             >
-              {isDark ? '🌞' : '🌙'}
+              {isDark ? '🌞' : '🌚'}
             </Button>
           </div>
 
@@ -84,13 +78,13 @@ const Navigation = ({ activeSection }) => {
               variant="ghost"
               size="sm"
               onClick={toggleTheme}
-              className="p-2"
+              className="p-2 text-yellow-400"
             >
-              {isDark ? '🌞' : '🌙'}
+              {isDark ? '🌞' : '🌚'}
             </Button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2"
+              className="p-2 text-yellow-400"
             >
               <div className="w-6 h-6 flex flex-col justify-center items-center">
                 <span className={`block w-5 h-0.5 bg-current transition-all ${isMenuOpen ? 'rotate-45 translate-y-1' : ''}`} />
@@ -115,10 +109,8 @@ const Navigation = ({ activeSection }) => {
                 onClick={() => scrollToSection(item.id)}
                 className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors ${
                   activeSection === item.id
-                    ? 'text-blue-600'
-                    : isDark
-                    ? 'text-gray-300 hover:text-white'
-                    : 'text-gray-700 hover:text-gray-900'
+                    ? 'text-yellow-400'
+                    : 'text-yellow-200 hover:text-yellow-400'
                 }`}
               >
                 {item.label}
