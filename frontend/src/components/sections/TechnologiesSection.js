@@ -9,24 +9,17 @@ const TechCard = ({ tech, index, isDark }) => (
     whileInView={{ opacity: 1, scale: 1 }}
     transition={{ delay: index * 0.1, duration: 0.5 }}
     viewport={{ once: true }}
-    whileHover={{ 
-      scale: 1.05, 
-      y: -5,
-      boxShadow: isDark 
-        ? "0 10px 30px rgba(59, 130, 246, 0.3)" 
-        : "0 10px 30px rgba(0, 0, 0, 0.15)"
-    }}
-    className={`p-4 rounded-xl transition-all duration-300 cursor-pointer ${
-      isDark 
-        ? 'bg-gray-800 border border-gray-700 hover:border-blue-500' 
-        : 'bg-white border border-gray-200 hover:border-blue-400'
-    } shadow-lg`}
+    className="tech-card p-4 rounded-xl cursor-pointer"
   >
     <div className="text-center">
-      <span className="text-3xl mb-2 block">{tech.icon}</span>
-      <h3 className={`font-semibold text-sm ${
-        isDark ? 'text-gray-200' : 'text-gray-800'
-      }`}>
+      <motion.span 
+        className="text-3xl mb-2 block"
+        whileHover={{ scale: 1.2, rotate: 360 }}
+        transition={{ duration: 0.6 }}
+      >
+        {tech.icon}
+      </motion.span>
+      <h3 className="font-semibold text-sm text-yellow-300">
         {tech.name}
       </h3>
     </div>
