@@ -34,9 +34,7 @@ const TechSection = ({ title, techs, isDark, delay = 0 }) => (
     viewport={{ once: true }}
     className="mb-12"
   >
-    <h3 className={`text-xl md:text-2xl font-bold mb-6 text-center ${
-      isDark ? 'text-blue-400' : 'text-blue-600'
-    }`}>
+    <h3 className="text-xl md:text-2xl font-bold mb-6 text-center text-yellow-400">
       {title}
     </h3>
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
