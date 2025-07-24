@@ -39,13 +39,17 @@ const Portfolio = () => {
   }, []);
 
   return (
-    <div className="min-h-screen transition-colors duration-500 bg-black text-yellow-100">
+    <div className="min-h-screen transition-colors duration-500 bg-black text-yellow-100 relative">
+      {/* DevOps Cloud Background */}
+      <DevOpsBackground />
+      
       <Navigation activeSection={activeSection} />
       
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
+        className="relative z-10"
       >
         <HeroSection />
         <AboutSection />
