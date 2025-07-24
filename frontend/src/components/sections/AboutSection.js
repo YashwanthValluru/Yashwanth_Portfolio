@@ -10,7 +10,7 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className={`py-20 ${isDark ? 'bg-gray-800' : 'bg-gray-50'} transition-colors duration-500`}
+      className="py-20 bg-gradient-to-br from-black via-gray-900 to-black transition-colors duration-500"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
