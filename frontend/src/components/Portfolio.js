@@ -10,6 +10,7 @@ import LeadershipSection from './sections/LeadershipSection';
 import MessageSection from './sections/MessageSection';
 import ContactSection from './sections/ContactSection';
 import Navigation from './Navigation';
+import DevOpsBackground from './DevOpsBackground';
 import { useTheme } from '../contexts/ThemeContext';
 
 const Portfolio = () => {
