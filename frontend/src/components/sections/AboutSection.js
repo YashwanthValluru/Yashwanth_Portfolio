@@ -54,9 +54,7 @@ const AboutSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index, duration: 0.5 }}
                 viewport={{ once: true }}
-                className={`flex flex-col items-center p-4 rounded-lg ${
-                  isDark ? 'bg-gray-700' : 'bg-white'
-                } shadow-md`}
+                className="interactive-card flex flex-col items-center p-4 rounded-lg bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-yellow-500/20 shadow-md hover:shadow-lg hover:border-yellow-500/40 transition-all duration-300"
               >
                 <span className="text-2xl mb-2">{item.icon}</span>
                 <span className={`text-sm font-medium ${
