@@ -21,7 +21,7 @@ const AboutSection = () => {
           className="text-center"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-8">
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent gradient-text">
               Who Am I? 🤔
             </span>
           </h2>
