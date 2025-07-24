@@ -72,16 +72,20 @@ export const mockData = {
   // Experience
   experience: [
     {
-      title: "DevOps + Migration Intern",
+      position: "DevOps + Migration Intern",
       company: "Minfy Technologies",
-      period: "Apr 2025 – Present",
+      duration: "Apr 2024 – Present",
+      description: "Focused on building robust CI/CD pipelines, containerizing ML applications, and implementing Infrastructure as Code solutions for scalable cloud deployments.",
+      icon: "⚡",
       achievements: [
-        "Built CI/CD pipelines using GitHub Actions",
-        "Dockerized ML models and services",
-        "Automated infrastructure with Terraform",
-        "Deployed and scaled services on EC2, ECS, EKS",
-        "Monitored performance with Prometheus + Grafana"
-      ]
+        "Built CI/CD pipelines using GitHub Actions for automated deployment workflows",
+        "Dockerized ML models and services for consistent deployment across environments",
+        "Automated infrastructure provisioning with Terraform and AWS CloudFormation",
+        "Deployed and scaled services on EC2, ECS, and EKS with high availability",
+        "Implemented comprehensive monitoring solutions with Prometheus + Grafana stack",
+        "Optimized deployment processes reducing deployment time by 60%"
+      ],
+      technologies: ["GitHub Actions", "Docker", "Kubernetes", "Terraform", "AWS", "Prometheus", "Grafana", "Python"]
     }
   ],
 
