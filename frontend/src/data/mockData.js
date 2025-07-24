@@ -27,6 +27,24 @@ export const mockData = {
     Let's create something amazing together!`
   },
 
+  // Contact Information
+  contactInfo: {
+    email: "yashwanthvalluru984882@gmail.com",
+    phone: "+91-8919384632",
+    linkedin: "https://linkedin.com/in/yashwanth-valluru",
+    github: "https://github.com/yashwanth-valluru"
+  },
+
+  // Personal Message
+  personalMessage: {
+    paragraphs: [
+      "Thank you for taking the time to explore my portfolio! I'm genuinely excited about the opportunity to share my journey in DevOps, Machine Learning, and Cloud Architecture with you.",
+      "Throughout my academic and professional journey, I've developed a deep passion for creating robust, scalable solutions that bridge the gap between development and operations. My experience at Minfy Technologies has taught me that the best technologies are those that empower teams and drive innovation.",
+      "I'm always eager to learn, collaborate, and take on new challenges. Whether you're looking to build cutting-edge cloud infrastructure, implement efficient CI/CD pipelines, or explore the intersection of ML and DevOps, I'd love to contribute to your vision.",
+      "I believe in the power of continuous learning and improvement, and I'm committed to staying at the forefront of technology trends. Let's connect and explore how we can create something amazing together!"
+    ]
+  },
+
   // Technologies organized by category
   technologies: {
     languages: [
