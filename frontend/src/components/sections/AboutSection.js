@@ -57,9 +57,7 @@ const AboutSection = () => {
                 className="interactive-card flex flex-col items-center p-4 rounded-lg bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-yellow-500/20 shadow-md hover:shadow-lg hover:border-yellow-500/40 transition-all duration-300"
               >
                 <span className="text-2xl mb-2">{item.icon}</span>
-                <span className={`text-sm font-medium ${
-                  isDark ? 'text-gray-300' : 'text-gray-700'
-                }`}>
+                <span className="text-sm font-medium text-yellow-200">
                   {item.label}
                 </span>
               </motion.div>
