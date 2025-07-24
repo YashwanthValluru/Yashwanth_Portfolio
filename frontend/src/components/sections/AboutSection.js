@@ -33,14 +33,8 @@ const AboutSection = () => {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto"
           >
-            <div className={`p-8 rounded-2xl shadow-lg ${
-              isDark 
-                ? 'bg-gray-900 border border-gray-700' 
-                : 'bg-white border border-gray-200'
-            }`}>
-              <p className={`text-lg md:text-xl leading-relaxed ${
-                isDark ? 'text-gray-300' : 'text-gray-700'
-              }`}>
+            <div className="interactive-card p-8 rounded-2xl shadow-lg border border-yellow-500/30 bg-gradient-to-br from-gray-900/90 via-black to-gray-800/90">
+              <p className="text-lg md:text-xl leading-relaxed text-yellow-100">
                 {personalInfo.about}
               </p>
             </div>
