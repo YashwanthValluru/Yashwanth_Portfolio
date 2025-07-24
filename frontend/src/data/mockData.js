@@ -143,11 +143,70 @@ export const mockData = {
 
   // Certifications and Achievements
   certifications: [
-    { name: "AWS Academy ML Foundations", icon: "🏆" },
-    { name: "AWS Cloud Practitioner", icon: "☁️" },
-    { name: "Prometheus & Grafana", icon: "📊" },
-    { name: "SRM JEE – Rank 5", icon: "🥇" },
-    { name: "SRM Founder's Scholarship Awardee", icon: "🎓" }
+    { 
+      name: "AWS Academy ML Foundations", 
+      icon: "🏆",
+      issuer: "Amazon Web Services",
+      year: "2024",
+      credentialId: "AWS-ML-2024-001",
+      link: "https://aws.amazon.com/academy/"
+    },
+    { 
+      name: "AWS Cloud Practitioner", 
+      icon: "☁️",
+      issuer: "Amazon Web Services",
+      year: "2024",
+      credentialId: "AWS-CP-2024-002",
+      link: "https://aws.amazon.com/certification/"
+    },
+    { 
+      name: "Prometheus & Grafana Certified", 
+      icon: "📊",
+      issuer: "CNCF",
+      year: "2024",
+      credentialId: "CNCF-PG-2024-003"
+    },
+    { 
+      name: "Docker Certified Associate", 
+      icon: "🐳",
+      issuer: "Docker Inc.",
+      year: "2024",
+      credentialId: "DOCKER-2024-004"
+    },
+    { 
+      name: "Kubernetes Administrator", 
+      icon: "☸️",
+      issuer: "Cloud Native Computing Foundation",
+      year: "2024",
+      credentialId: "CKA-2024-005"
+    }
+  ],
+
+  achievements: [
+    {
+      title: "SRM JEE – Rank 5",
+      description: "Secured 5th rank in SRM Joint Entrance Examination",
+      value: "Rank 5",
+      icon: "🥇"
+    },
+    {
+      title: "SRM Founder's Scholarship",
+      description: "Recipient of prestigious merit-based scholarship",
+      value: "100%",
+      icon: "🎓"
+    },
+    {
+      title: "Academic Excellence",
+      description: "Maintained consistent high performance",
+      value: "8.55 CGPA",
+      icon: "⭐"
+    },
+    {
+      title: "Project Innovation Award",
+      description: "Recognition for outstanding project work",
+      value: "Gold Medal",
+      icon: "🏅"
+    }
   ],
 
   // Leadership
@@ -155,12 +214,32 @@ export const mockData = {
     {
       title: "Joint Cultural Secretary",
       organization: "SRMIST",
-      description: "Organized Milan, one of India's largest college fests"
+      duration: "2023 - 2024",
+      description: "Led the organization of Milan, one of India's largest college cultural festivals, managing a team of 50+ volunteers and coordinating with 200+ colleges nationwide. Successfully executed events with 30,000+ participants and managed a budget of ₹2+ crores.",
+      icon: "👑",
+      achievements: [
+        "Organized Milan festival with 30,000+ participants from 200+ colleges",
+        "Managed cross-functional teams of 50+ volunteers across multiple departments",
+        "Coordinated with celebrity artists and managed event logistics worth ₹2+ crores",
+        "Implemented digital registration system reducing processing time by 60%",
+        "Led sponsorship initiatives securing funding from 15+ corporate partners"
+      ],
+      skills: ["Team Leadership", "Event Management", "Budget Planning", "Vendor Coordination", "Public Speaking"]
     },
     {
-      title: "Committee Head",
-      organization: "AIU-hosted event at SRM",
-      description: "Led committee for All India University hosted event"
+      title: "Committee Head - AIU Event",
+      organization: "All India University hosted at SRM",
+      duration: "2023",
+      description: "Headed the organizing committee for a prestigious All India University event hosted at SRM, coordinating between multiple universities and ensuring seamless execution of inter-university competitions and cultural programs.",
+      icon: "🎯",
+      achievements: [
+        "Successfully coordinated with 25+ universities across India",
+        "Managed logistics for 500+ participants from different states",
+        "Oversaw competition judging panels and cultural program scheduling",
+        "Established partnerships with industry sponsors and government bodies",
+        "Achieved 95% participant satisfaction rating through post-event surveys"
+      ],
+      skills: ["Inter-institutional Coordination", "Project Management", "Stakeholder Management", "Communication", "Problem Solving"]
     }
   ]
 };
