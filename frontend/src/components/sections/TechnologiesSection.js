@@ -17,7 +17,7 @@ const TechCard = ({ tech, index, isDark }) => (
         whileHover={{ scale: 1.2, rotate: 360 }}
         transition={{ duration: 0.6 }}
       >
-        {tech.icon}
+        <img src={tech.icon} alt={tech.name} className="w-10 h-10" />
       </motion.span>
       <h3 className="font-semibold text-sm text-yellow-300">
         {tech.name}

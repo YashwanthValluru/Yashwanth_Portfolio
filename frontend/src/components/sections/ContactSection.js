@@ -9,7 +9,7 @@ const ContactSection = () => {
   const { isDark } = useTheme();
   const { toast } = useToast();
   const { contactInfo } = mockData;
-  
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -29,27 +29,56 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Mock form submission
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
-      
-      // Save to localStorage for mock behavior
-      const submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
-      submissions.push({
-        ...formData,
-        timestamp: new Date().toISOString(),
-        id: Date.now()
-      });
-      localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
+    // --- Start of API Integration ---
+    
+    const backendUrl = 'http://127.0.0.1:8000/api/contact-messages'; // Or your deployed backend URL
 
+    try {
+      const response = await fetch(backendUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          // You might need 'Access-Control-Allow-Origin' or other CORS headers on the server side
+          // but for this simple setup, FastAPI's CORSMiddleware handles it.
+        },
+        body: JSON.stringify({
+          sender_name: formData.name, // Map 'name' to 'sender_name' for backend
+          sender_email: formData.email, // New field for email
+          subject: formData.subject,
+          content: formData.message    // Map 'message' to 'content' for backend
+        })
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        toast({
+          title: "Message sent successfully! 🎉",
+          description: "Thank you for reaching out. I'll get back to you soon!",
+        });
+        console.log('Backend response:', result); // Log the response from your backend
+
+        setFormData({ name: '', email: '', subject: '', message: '' }); // Clear form on success
+      } else {
+        const errorData = await response.json();
+        toast({
+          title: "Failed to send message!",
+          description: errorData.detail || "Something went wrong on the server.",
+          variant: "destructive", // Add a destructive variant for error toasts
+        });
+        console.error('Backend error:', errorData);
+      }
+    } catch (error) {
+      console.error('Network or API call error:', error);
       toast({
-        title: "Message sent successfully! 🎉",
-        description: "Thank you for reaching out. I'll get back to you soon!",
+        title: "Network error!",
+        description: "Could not connect to the backend. Please try again later.",
+        variant: "destructive",
       });
-
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setIsSubmitting(false);
-    }, 2000);
+    } finally {
+      setIsSubmitting(false); // Always reset submission state
+    }
+      
+    // --- End of API Integration ---
   };
 
   const contactLinks = [
@@ -128,7 +157,7 @@ const ContactSection = () => {
             </span>
           </h2>
           <p className="text-lg text-yellow-200 max-w-2xl mx-auto">
-            Ready to collaborate? Have a project in mind? Or just want to chat about DevOps, ML, and Cloud? 
+            Ready to collaborate? Have a project in mind? Or just want to chat about DevOps, ML, and Cloud?
             I'd love to hear from you!
           </p>
         </motion.div>
@@ -142,7 +171,7 @@ const ContactSection = () => {
             viewport={{ once: true }}
           >
             <h3 className="text-2xl font-bold text-yellow-400 mb-8">Get in Touch</h3>
-            
+
             <div className="space-y-6">
               {contactLinks.map((contact, index) => (
                 <motion.a
@@ -212,7 +241,7 @@ const ContactSection = () => {
           >
             <div className="interactive-card p-8 rounded-2xl border border-yellow-500/30 bg-gradient-to-br from-gray-900/95 via-black to-gray-800/95">
               <h3 className="text-2xl font-bold text-yellow-400 mb-6">Send a Message</h3>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
@@ -312,7 +341,7 @@ const ContactSection = () => {
           className="text-center mt-16 pt-8 border-t border-yellow-500/20"
         >
           <p className="text-yellow-200/60">
-            © 2024 Valluru Yashwanth Reddy. Built with ❤️ using React, Tailwind CSS, and lots of coffee ☕
+            © 2024 Valluru Yashwanth Reddy.
           </p>
         </motion.div>
       </div>

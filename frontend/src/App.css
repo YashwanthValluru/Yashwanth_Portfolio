@@ -92,13 +92,13 @@ body {
 }
 
 .interactive-card:hover::before {
-    opacity: 1;
-    animation: borderRotate 2s linear infinite;
+    opacity: 0.3; /* Lowered from 1 for less highlight */
+    animation: none; /* Remove border animation */
 }
 
 .interactive-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3);
+    transform: translateY(-4px) scale(1.01); /* Less movement */
+    box-shadow: 0 8px 16px rgba(255, 215, 0, 0.15); /* Softer shadow */
     border-color: #ffd700;
 }
 

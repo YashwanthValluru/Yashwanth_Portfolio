@@ -1,3 +1,28 @@
+import iam from "./tech-logos/lambda.svg";
+//import sqli from "./tech-logos/sqli.svg"
+import aws from "./tech-logos/aws.svg";
+import python from "./tech-logos/python.svg";
+import cf from "./tech-logos/CloudFormation.svg"
+import cw from "./tech-logos/CloudWatch.svg"
+import ec2 from "./tech-logos/EC2.svg"
+import ecs from "./tech-logos/ECS.svg"
+import ecr from "./tech-logos/ECR.svg"
+import eks from "./tech-logos/EKS.svg"
+import ga from "./tech-logos/github-actions.svg"
+import jenkins from "./tech-logos/jenkins.svg"
+import csharp from "./tech-logos/c-sharp.svg"
+import k8s from "./tech-logos/kubernetes.svg"
+import lmd from "./tech-logos/Lambda (1).svg"
+import s3 from "./tech-logos/s3.svg"
+import tf from "./tech-logos/terraform.svg"
+import vpc from "./tech-logos/VPC.svg"
+import cdk from "./tech-logos/CDK.svg"
+import awsiam from "./tech-logos/aws-iam.svg"
+import docker from "./tech-logos/docker.svg"
+
+
+
+
 export const mockData = {
   // Rotating funny quotes
   funnyQuotes: [
@@ -19,7 +44,7 @@ export const mockData = {
       email: "yashwanthvalluru984882@gmail.com",
       phone: "+91-8919384632",
       linkedin: "https://linkedin.com/in/yashwanth-valluru",
-      github: "https://github.com/yashwanth-valluru"
+      github: "https://github.com/YashwanthValluru"
     },
     message: `Thank you for taking the time to explore my portfolio! I'd be happy to connect if you have a hiring 
     opportunity to discuss or an exciting collaboration in mind. I'm always open to scheduling a call or meeting 
@@ -32,7 +57,7 @@ export const mockData = {
     email: "yashwanthvalluru984882@gmail.com",
     phone: "+91-8919384632",
     linkedin: "https://linkedin.com/in/yashwanth-valluru",
-    github: "https://github.com/yashwanth-valluru"
+    github: "https://github.com/YashwanthValluru"
   },
 
   // Personal Message
@@ -48,27 +73,30 @@ export const mockData = {
   // Technologies organized by category
   technologies: {
     languages: [
-      { name: "Python", icon: "🐍" },
-      { name: "Java", icon: "☕" },
-      { name: "SQL", icon: "🗃️" },
-      { name: "Bash", icon: "💻" }
+      { name: "Python", icon: python },
+      { name: "C#", icon: csharp},
+      { name: "SQL", icon: "" },
+      { name: "Bash", icon: "" }
     ],
     cloud: [
-      { name: "AWS IAM", icon: "🔐" },
-      { name: "EC2", icon: "💻" },
-      { name: "S3", icon: "🪣" },
-      { name: "Lambda", icon: "⚡" },
-      { name: "ECS", icon: "📦" },
-      { name: "EKS", icon: "☸️" },
-      { name: "VPC", icon: "🌐" },
-      { name: "ECR", icon: "📋" }
+      { name: "AWS IAM", icon: awsiam },
+      { name: "EC2", icon: ec2 },
+      { name: "S3", icon: s3 },
+      { name: "Lambda", icon: iam },
+      { name: "ECS", icon: ecs },
+      { name: "ECR", icon: ecr },
+      { name: "EKS", icon: eks },
+      { name: "VPC", icon: vpc },
+      { name: "Cloudwatch", icon: cw  },
+      { name: "CDK", icon: cdk },
+      { name: "Cloudformation", icon: cf }
     ],
     devops: [
-      { name: "GitHub Actions", icon: "🚀" },
-      { name: "Docker", icon: "🐳" },
-      { name: "Jenkins", icon: "🔧" },
-      { name: "Kubernetes", icon: "☸️" },
-      { name: "Terraform", icon: "🏗️" }
+      { name: "GitHub Actions", icon: ga },
+      { name: "Docker", icon: docker },
+      { name: "Jenkins", icon: jenkins },
+      { name: "Kubernetes", icon: k8s },
+      { name: "Terraform", icon: tf }
     ],
     mlData: [
       { name: "TensorFlow", icon: "🧠" },
@@ -166,20 +194,6 @@ export const mockData = {
       year: "2024",
       credentialId: "CNCF-PG-2024-003"
     },
-    { 
-      name: "Docker Certified Associate", 
-      icon: "🐳",
-      issuer: "Docker Inc.",
-      year: "2024",
-      credentialId: "DOCKER-2024-004"
-    },
-    { 
-      name: "Kubernetes Administrator", 
-      icon: "☸️",
-      issuer: "Cloud Native Computing Foundation",
-      year: "2024",
-      credentialId: "CKA-2024-005"
-    }
   ],
 
   achievements: [
@@ -227,7 +241,7 @@ export const mockData = {
       skills: ["Team Leadership", "Event Management", "Budget Planning", "Vendor Coordination", "Public Speaking"]
     },
     {
-      title: "Committee Head - AIU Event",
+      title: "Secretary - AIU Event",
       organization: "All India University hosted at SRM",
       duration: "2023",
       description: "Headed the organizing committee for a prestigious All India University event hosted at SRM, coordinating between multiple universities and ensuring seamless execution of inter-university competitions and cultural programs.",
@@ -239,7 +253,7 @@ export const mockData = {
         "Established partnerships with industry sponsors and government bodies",
         "Achieved 95% participant satisfaction rating through post-event surveys"
       ],
-      skills: ["Inter-institutional Coordination", "Project Management", "Stakeholder Management", "Communication", "Problem Solving"]
+      skills: ["Inter-institutional Coordination", "Project Management", "Communication", "Problem Solving"]
     }
   ]
 };

@@ -3,6 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '../ui/button';
 import { useTheme } from '../../contexts/ThemeContext';
 import { mockData } from '../../data/mockData';
+import DevOpsBackground from '../DevOpsBackground';
+import yash from "../../data/tech-logos/yashwanth.jpg"
+import yash2 from "../../data/tech-logos/Image (3).jpg"
+import { Icon } from 'lucide-react';
 
 const TypingAnimation = ({ texts, className = "" }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -60,7 +64,7 @@ const HeroSection = () => {
   const handleDownloadResume = () => {
     // Mock resume download
     const link = document.createElement('a');
-    link.href = '/api/placeholder/resume.pdf';
+    link.href = 'emergent-portfolio\frontend\src\data\tech-logos\Yashwanth_resume_VYR (mnfy) (1) (1).pdf'; // Replace with your actual resume path
     link.download = 'Valluru_Yashwanth_Reddy_Resume.pdf';
     link.click();
     
@@ -71,7 +75,7 @@ const HeroSection = () => {
 
   const handleScheduleMeet = () => {
     // Mock meeting scheduler
-    window.open('https://calendly.com/yashwanth-valluru', '_blank');
+    window.open('https://calendar.app.google/SfJudM192JJ7UnSe7', '_blank'); // Replace with your actual scheduling link
   };
 
   return (
@@ -79,54 +83,28 @@ const HeroSection = () => {
       id="hero"
       className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black"
     >
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-yellow-400/10"
-            style={{
-              width: Math.random() * 300 + 50,
-              height: Math.random() * 300 + 50,
-              left: Math.random() * 100 + '%',
-              top: Math.random() * 100 + '%',
-            }}
-            animate={{
-              y: [0, -30, 0],
-              x: [0, 20, 0],
-              scale: [1, 1.1, 1],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+      {/* Realistic Cloud, Machine, and Data Flow Background */}
+      <DevOpsBackground />
+      {/* Main Hero Content */}
+      <div className="max-w-7xl mx-auto px-4 pb-10 sm:px-6 lg:px-8 relative z-10">
+        {/* Profile Image */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
+          // --- FURTHER ADJUSTED POSITIONING AND SIZE HERE ---
+          // Set to top-0 for maximum upward movement, increased negative left values even more
+          className="absolute top--10 -left-20 sm:-left-28 md:-left-36 lg:-left-48 xl:-left-64 2xl:-left-80 z-20"
+        >
+          <img
+            src= {yash2}// **IMPORTANT: Replace with the actual path to your profile picture**
+            alt="Profile"
+            // Increased size again: Larger values for w and h
+            className="w-36 h-36 sm:w-48 sm:h-48 md:w-60 md:h-60 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full object-cover border-4 border-yellow-500 shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out"
+            style={{ borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%' }} // Elliptical shape
           />
-        ))}
-        
-        {/* Additional yellow accent particles */}
-        {[...Array(10)].map((_, i) => (
-          <motion.div
-            key={`accent-${i}`}
-            className="absolute w-2 h-2 bg-yellow-500 rounded-full"
-            style={{
-              left: Math.random() * 100 + '%',
-              top: Math.random() * 100 + '%',
-            }}
-            animate={{
-              opacity: [0, 1, 0],
-              scale: [0, 1, 0],
-            }}
-            transition={{
-              duration: Math.random() * 3 + 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-      </div>
+        </motion.div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
           {/* Funny Quote */}
           <motion.div
@@ -196,8 +174,8 @@ const HeroSection = () => {
             </motion.div>
 
             <motion.div
-              whileHover={{ 
-                scale: 1.05, 
+              whileHover={{
+                scale: 1.05,
                 y: -2,
               }}
               whileTap={{ scale: 0.95 }}
@@ -213,25 +191,6 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Scroll Indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-6 h-10 border-2 border-yellow-500 rounded-full flex justify-center glow-pulse"
-            >
-              <motion.div
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-1 h-3 rounded-full mt-2 bg-yellow-500"
-              />
-            </motion.div>
-          </motion.div>
         </div>
       </div>
     </section>

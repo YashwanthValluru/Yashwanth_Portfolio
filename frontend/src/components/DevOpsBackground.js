@@ -1,271 +1,84 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+// 3D-styled SVGs (simple gradients, shadows, transforms for effect)
+const AwsLogo3D = () => (
+  <svg width="64" height="64" viewBox="0 0 64 64" style={{ filter: 'drop-shadow(0 4px 16px #ff990055)' }}><ellipse cx="32" cy="32" rx="26" ry="16" fill="url(#aws3d)" /><defs><linearGradient id="aws3d" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#FFB347"/><stop offset="100%" stopColor="#FF9900"/></linearGradient></defs><ellipse cx="32" cy="36" rx="18" ry="6" fill="#fff" opacity="0.15"/></svg>
+);
+const AzureLogo3D = () => (
+  <svg width="64" height="64" viewBox="0 0 64 64" style={{ filter: 'drop-shadow(0 4px 16px #0078d455)' }}><polygon points="32,10 56,54 8,54" fill="url(#az3d)" /><defs><linearGradient id="az3d" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#7FDBFF"/><stop offset="100%" stopColor="#0078D4"/></linearGradient></defs></svg>
+);
+const GcpLogo3D = () => (
+  <svg width="64" height="64" viewBox="0 0 64 64" style={{ filter: 'drop-shadow(0 4px 16px #4285f455)' }}><circle cx="32" cy="32" r="26" fill="url(#gcp3d)" /><defs><radialGradient id="gcp3d" cx="0.5" cy="0.5" r="0.5"><stop offset="0%" stopColor="#fff"/><stop offset="100%" stopColor="#4285F4"/></radialGradient></defs><circle cx="32" cy="32" r="14" fill="#fff" opacity="0.12"/></svg>
+);
+const CloudLogo3D = () => (
+  <svg width="64" height="64" viewBox="0 0 64 64" style={{ filter: 'drop-shadow(0 4px 16px #e0e7ef55)' }}><ellipse cx="32" cy="40" rx="22" ry="12" fill="url(#cloud3d)" /><defs><linearGradient id="cloud3d" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#fff"/><stop offset="100%" stopColor="#e0e7ef"/></linearGradient></defs><ellipse cx="22" cy="36" rx="10" ry="6" fill="#fff" opacity="0.18"/><ellipse cx="42" cy="36" rx="10" ry="6" fill="#fff" opacity="0.18"/></svg>
+);
+const LaptopLogo3D = () => (
+  <svg width="64" height="64" viewBox="0 0 64 64" style={{ filter: 'drop-shadow(0 4px 16px #2228)' }}><rect x="12" y="20" width="40" height="20" rx="3" fill="url(#lap3d)" /><defs><linearGradient id="lap3d" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#bbb"/><stop offset="100%" stopColor="#222"/></linearGradient></defs><rect x="16" y="26" width="32" height="8" rx="2" fill="#fff" opacity="0.18"/><rect x="10" y="44" width="44" height="6" rx="3" fill="#888" opacity="0.7"/></svg>
+);
+
 const DevOpsBackground = () => {
-  // DevOps conceptual labels for floating animations
-  const devopsLabels = [
-    "CI/CD Pipeline",
-    "Infrastructure as Code", 
-    "Container Orchestration",
-    "Automated Deployment",
-    "Monitoring & Alerts",
-    "Load Balancing",
-    "Auto Scaling",
-    "Microservices Architecture"
+  // Fixed, non-intrusive logo positions (corners/edges)
+  const logos = [
+    { Logo: AwsLogo3D, style: { top: 24, left: 24 } }, // top-left
+    { Logo: AzureLogo3D, style: { top: 24, right: 24 } }, // top-right
+    { Logo: GcpLogo3D, style: { bottom: 24, left: 24 } }, // bottom-left
+    { Logo: CloudLogo3D, style: { bottom: 24, right: 24 } }, // bottom-right
+    { Logo: LaptopLogo3D, style: { bottom: 40, left: '50%', transform: 'translateX(-50%)' } }, // bottom center
   ];
 
-  // Cloud shapes data
-  const cloudShapes = Array.from({ length: 8 }, (_, i) => ({
-    id: i,
-    size: Math.random() * 150 + 100,
-    left: Math.random() * 100,
-    top: Math.random() * 100,
-    delay: Math.random() * 10,
-    duration: Math.random() * 20 + 15
-  }));
-
-  // Data flow points for animated connections
-  const dataFlowPoints = [
-    { x: 10, y: 20, delay: 0 },
-    { x: 30, y: 40, delay: 1 },
-    { x: 50, y: 30, delay: 2 },
-    { x: 70, y: 50, delay: 3 },
-    { x: 90, y: 35, delay: 4 }
-  ];
+  // Subtle floating/rotating/scale animation variants
+  const floatAnim = (delay = 0) => ({
+    initial: { opacity: 0.18, scale: 1, y: 0, rotate: 0 },
+    animate: { opacity: 0.22, scale: [1, 1.08, 1], y: [0, -10, 0], rotate: [0, 6, 0] },
+    transition: { duration: 8, repeat: Infinity, delay, ease: 'easeInOut' }
+  });
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {/* Subtle Grid Pattern */}
+    <div className="fixed inset-0 pointer-events-none z-0">
+      {/* Subtle grid pattern for depth */}
       <div 
         className="absolute inset-0 opacity-5"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(255, 215, 0, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 215, 0, 0.1) 1px, transparent 1px)
+            linear-gradient(rgba(255, 215, 0, 0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 215, 0, 0.08) 1px, transparent 1px)
           `,
-          backgroundSize: '50px 50px'
+          backgroundSize: '60px 60px'
         }}
       />
-
-      {/* Animated Cloud Shapes */}
-      {cloudShapes.map((cloud) => (
+      {/* 3D Animated Logos in fixed, non-intrusive positions */}
+      {logos.map(({ Logo, style }, i) => (
         <motion.div
-          key={cloud.id}
+          key={i}
           className="absolute"
-          style={{
-            left: `${cloud.left}%`,
-            top: `${cloud.top}%`,
-            width: cloud.size,
-            height: cloud.size * 0.6,
-          }}
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ 
-            opacity: [0.1, 0.3, 0.1],
-            scale: [0.8, 1.2, 0.8],
-            rotate: [0, 5, 0],
-            x: [0, 20, 0],
-            y: [0, -15, 0]
-          }}
-          transition={{
-            duration: cloud.duration,
-            repeat: Infinity,
-            delay: cloud.delay,
-            ease: "easeInOut"
-          }}
+          style={{ ...style, zIndex: 1, opacity: 0.22, filter: 'blur(0.5px)' }}
+          {...floatAnim(i * 1.5)}
         >
-          {/* Multi-part cloud shape */}
-          <div className="relative">
-            <div className="absolute w-16 h-16 bg-yellow-400/10 rounded-full" />
-            <div className="absolute left-4 w-20 h-20 bg-yellow-400/15 rounded-full" />
-            <div className="absolute left-8 w-12 h-12 bg-yellow-400/12 rounded-full" />
-            <div className="absolute left-2 top-2 w-14 h-14 bg-yellow-400/8 rounded-full" />
-            
-            {/* Subtle glow effect */}
-            <div className="absolute inset-0 bg-yellow-400/5 rounded-full blur-xl" />
-          </div>
+          <Logo />
         </motion.div>
       ))}
-
-      {/* Local Machine Icons */}
-      <motion.div
-        className="absolute bottom-10 left-10"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 0.6, y: 0 }}
-        transition={{ delay: 2, duration: 1 }}
-      >
-        <div className="flex items-center space-x-4">
-          <motion.div
-            animate={{ 
-              scale: [1, 1.05, 1],
-              rotate: [0, 2, 0] 
-            }}
-            transition={{ duration: 4, repeat: Infinity }}
-            className="p-3 bg-yellow-400/20 rounded-lg border border-yellow-400/30"
-          >
-            <div className="w-8 h-6 bg-yellow-400/40 rounded-sm relative">
-              <div className="absolute top-1 left-1 w-2 h-1 bg-yellow-400/60 rounded-full" />
-              <div className="absolute top-1 right-1 w-2 h-1 bg-yellow-400/60 rounded-full" />
-            </div>
-          </motion.div>
-          
-          <motion.div
-            animate={{ opacity: [0.3, 0.7, 0.3] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="text-xs text-yellow-400/60 font-mono"
-          >
-            Local Dev
-          </motion.div>
-        </div>
-      </motion.div>
-
-      {/* Cloud Services Icon */}
-      <motion.div
-        className="absolute top-20 right-20"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 0.6, scale: 1 }}
-        transition={{ delay: 3, duration: 1 }}
-      >
-        <motion.div
-          animate={{ 
-            y: [0, -10, 0],
-            scale: [1, 1.1, 1] 
-          }}
-          transition={{ duration: 6, repeat: Infinity }}
-          className="relative"
-        >
-          {/* Cloud cluster representing services */}
-          <div className="flex items-center space-x-2">
-            <div className="p-4 bg-yellow-400/20 rounded-2xl border border-yellow-400/30">
-              <div className="w-12 h-8 relative">
-                <div className="absolute w-3 h-3 bg-yellow-400/60 rounded-full top-0 left-1" />
-                <div className="absolute w-4 h-4 bg-yellow-400/50 rounded-full top-0 left-3" />
-                <div className="absolute w-3 h-3 bg-yellow-400/60 rounded-full top-0 left-7" />
-                <div className="absolute w-8 h-2 bg-yellow-400/40 rounded-full bottom-0" />
-              </div>
-            </div>
-            
-            <motion.div
-              animate={{ opacity: [0.3, 0.7, 0.3] }}
-              transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-              className="text-xs text-yellow-400/60 font-mono"
-            >
-              Cloud Services
-            </motion.div>
-          </div>
-        </motion.div>
-      </motion.div>
-
-      {/* Animated Data Flow */}
-      <svg
-        className="absolute inset-0 w-full h-full"
-        style={{ zIndex: -1 }}
-      >
-        <defs>
-          <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(255, 215, 0, 0)" />
-            <stop offset="50%" stopColor="rgba(255, 215, 0, 0.6)" />
-            <stop offset="100%" stopColor="rgba(255, 215, 0, 0)" />
-          </linearGradient>
-        </defs>
-
-        {/* Data flow lines */}
-        {dataFlowPoints.slice(0, -1).map((point, index) => {
-          const nextPoint = dataFlowPoints[index + 1];
-          return (
-            <motion.line
-              key={index}
-              x1={`${point.x}%`}
-              y1={`${point.y}%`}
-              x2={`${nextPoint.x}%`}
-              y2={`${nextPoint.y}%`}
-              stroke="url(#flowGradient)"
-              strokeWidth="2"
-              strokeDasharray="10,5"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ 
-                pathLength: [0, 1, 0],
-                opacity: [0, 0.6, 0]
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                delay: point.delay,
-                ease: "easeInOut"
-              }}
-            />
-          );
-        })}
-
-        {/* Data packets moving along the flow */}
-        {dataFlowPoints.map((point, index) => (
-          <motion.circle
-            key={`packet-${index}`}
-            r="3"
-            fill="rgba(255, 215, 0, 0.8)"
-            initial={{ 
-              cx: `${dataFlowPoints[0].x}%`,
-              cy: `${dataFlowPoints[0].y}%`,
-              opacity: 0
-            }}
-            animate={{
-              cx: dataFlowPoints.map(p => `${p.x}%`),
-              cy: dataFlowPoints.map(p => `${p.y}%`),
-              opacity: [0, 1, 1, 1, 0]
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              delay: index * 2,
-              ease: "easeInOut"
-            }}
-          />
-        ))}
-      </svg>
-
-      {/* Floating DevOps Labels */}
-      {devopsLabels.map((label, index) => (
-        <motion.div
-          key={label}
-          className="absolute text-xs font-mono text-yellow-400/40 pointer-events-none"
-          style={{
-            left: `${10 + (index * 11) % 80}%`,
-            top: `${20 + (index * 7) % 60}%`,
-          }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ 
-            opacity: [0, 0.6, 0],
-            y: [20, -10, 20],
-            x: [0, 10, 0]
-          }}
-          transition={{
-            duration: 12 + (index * 2),
-            repeat: Infinity,
-            delay: index * 1.5,
-            ease: "easeInOut"
-          }}
-        >
-          {label}
-        </motion.div>
-      ))}
-
-      {/* Subtle animated particles */}
-      {Array.from({ length: 30 }, (_, i) => (
+      {/* Subtle animated particles for extra visual interest */}
+      {Array.from({ length: 12 }, (_, i) => (
         <motion.div
           key={`particle-${i}`}
-          className="absolute w-1 h-1 bg-yellow-400/30 rounded-full"
+          className="absolute w-2 h-2 bg-yellow-400/20 rounded-full"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
+            left: `${10 + Math.random() * 80}%`,
+            top: `${10 + Math.random() * 80}%`,
+            filter: 'blur(1.5px)',
+            zIndex: 0
           }}
           animate={{
-            opacity: [0, 1, 0],
-            scale: [0, 1, 0],
-            y: [0, -100, 0],
+            opacity: [0, 0.18, 0],
+            scale: [0.8, 1.2, 0.8],
+            y: [0, -20, 0],
           }}
           transition={{
-            duration: Math.random() * 10 + 10,
+            duration: Math.random() * 8 + 8,
             repeat: Infinity,
-            delay: Math.random() * 5,
+            delay: Math.random() * 4,
             ease: "easeOut"
           }}
         />

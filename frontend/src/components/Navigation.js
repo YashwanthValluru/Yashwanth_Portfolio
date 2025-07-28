@@ -39,7 +39,7 @@ const Navigation = ({ activeSection }) => {
             onClick={() => scrollToSection('hero')}
           >
             <span className="bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
-              YVR
+              Yashwanth
             </span>
           </motion.div>
 
