@@ -176,7 +176,7 @@ export const mockData = {
       ],
       technologies: ["Keras", "TensorFlow", "VGG16", "ResNet50", "OpenCV"],
       youtubeVideoId: null, // Set to null or your video ID if this project also has one
-      githubLink: "",
+      githubLink: "https://github.com/YashwanthValluru/wheat-disease-classification",
       liveDemo: ""
     }
   ],
