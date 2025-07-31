@@ -150,9 +150,9 @@ const LeadershipSection = () => {
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8"
         >
           {[
-            { number: '50+', label: 'Team Members Led' },
+            { number: '300+', label: 'Team Members Led' },
             { number: '3+', label: 'Years Experience' },
-            { number: '10+', label: 'Events Organized' },
+            { number: '40+', label: 'Events Organized' },
             { number: '100%', label: 'Team Satisfaction' },
           ].map((stat, index) => (
             <motion.div

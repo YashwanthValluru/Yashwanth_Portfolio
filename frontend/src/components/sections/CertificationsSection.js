@@ -22,7 +22,12 @@ const CertificationCard = ({ cert, index, isDark }) => (
       
       <div className="relative z-10">
         <div className="flex items-center justify-between mb-4">
-          <div className="text-3xl">{cert.icon}</div>
+          {/* Conditional rendering for icon: SVG image or emoji/text */}
+          {typeof cert.icon === 'string' && cert.icon.endsWith('.svg') ? (
+            <img src={cert.icon} alt={`${cert.name} icon`} className="w-10 h-10 object-contain" />
+          ) : (
+            <div className="text-3xl">{cert.icon}</div>
+          )}
           <div className="text-xs text-yellow-300/60">{cert.year}</div>
         </div>
         

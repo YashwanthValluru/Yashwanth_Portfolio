@@ -4,8 +4,8 @@ import { Button } from '../ui/button';
 import { useTheme } from '../../contexts/ThemeContext';
 import { mockData } from '../../data/mockData';
 import DevOpsBackground from '../DevOpsBackground';
-import yash from "../../data/tech-logos/yashwanth.jpg"
-import yash2 from "../../data/tech-logos/Image (3).jpg"
+import yash from "../../data/tech-logos/yashwanth.jpg";
+import yash2 from "../../data/tech-logos/Image (3).jpg";
 import { Icon } from 'lucide-react';
 
 const TypingAnimation = ({ texts, className = "" }) => {
@@ -52,6 +52,7 @@ const TypingAnimation = ({ texts, className = "" }) => {
 const HeroSection = () => {
   const { isDark } = useTheme();
   const [currentQuote, setCurrentQuote] = useState(0);
+  const [showResume, setShowResume] = useState(false);
   const { funnyQuotes, personalInfo } = mockData;
 
   useEffect(() => {
@@ -62,20 +63,11 @@ const HeroSection = () => {
   }, [funnyQuotes.length]);
 
   const handleDownloadResume = () => {
-    // Mock resume download
-    const link = document.createElement('a');
-    link.href = 'emergent-portfolio\frontend\src\data\tech-logos\Yashwanth_resume_VYR (mnfy) (1) (1).pdf'; // Replace with your actual resume path
-    link.download = 'Valluru_Yashwanth_Reddy_Resume.pdf';
-    link.click();
-    
-    // Save to local storage for mock behavior
-    const downloads = JSON.parse(localStorage.getItem('resumeDownloads') || '0');
-    localStorage.setItem('resumeDownloads', JSON.stringify(downloads + 1));
+    setShowResume(!showResume);
   };
 
   const handleScheduleMeet = () => {
-    // Mock meeting scheduler
-    window.open('https://calendar.app.google/SfJudM192JJ7UnSe7', '_blank'); // Replace with your actual scheduling link
+    window.open('https://calendar.app.google/SfJudM192JJ7UnSe7', '_blank');
   };
 
   return (
@@ -83,30 +75,23 @@ const HeroSection = () => {
       id="hero"
       className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black"
     >
-      {/* Realistic Cloud, Machine, and Data Flow Background */}
       <DevOpsBackground />
-      {/* Main Hero Content */}
       <div className="max-w-7xl mx-auto px-4 pb-10 sm:px-6 lg:px-8 relative z-10">
-        {/* Profile Image */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          // --- FURTHER ADJUSTED POSITIONING AND SIZE HERE ---
-          // Set to top-0 for maximum upward movement, increased negative left values even more
           className="absolute top--10 -left-20 sm:-left-28 md:-left-36 lg:-left-48 xl:-left-64 2xl:-left-80 z-20"
         >
           <img
-            src= {yash2}// **IMPORTANT: Replace with the actual path to your profile picture**
+            src= {yash2}
             alt="Profile"
-            // Increased size again: Larger values for w and h
             className="w-36 h-36 sm:w-48 sm:h-48 md:w-60 md:h-60 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full object-cover border-4 border-yellow-500 shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out"
-            style={{ borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%' }} // Elliptical shape
+            style={{ borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%' }}
           />
         </motion.div>
 
         <div className="text-center">
-          {/* Funny Quote */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -126,7 +111,6 @@ const HeroSection = () => {
             </AnimatePresence>
           </motion.div>
 
-          {/* Name */}
           <motion.h1
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -138,7 +122,6 @@ const HeroSection = () => {
             </span>
           </motion.h1>
 
-          {/* Typing Animation for Titles */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -153,7 +136,6 @@ const HeroSection = () => {
             </h2>
           </motion.div>
 
-          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -169,15 +151,12 @@ const HeroSection = () => {
                 size="lg"
                 className="interactive-button px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                📄 Download Resume
+                {showResume ? 'Close Resume' : 'View Resume'}
               </Button>
             </motion.div>
 
             <motion.div
-              whileHover={{
-                scale: 1.05,
-                y: -2,
-              }}
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
               <Button
@@ -190,9 +169,41 @@ const HeroSection = () => {
               </Button>
             </motion.div>
           </motion.div>
-
         </div>
       </div>
+
+      <AnimatePresence>
+        {showResume && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50"
+            onClick={() => setShowResume(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="relative w-full max-w-4xl h-full max-h-[80vh] pt-16"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <iframe
+                src="/Yashwanth_resume_upt_mnfy.pdf"
+                className="w-full h-full border-0 rounded-lg shadow-2xl"
+                title="Yashwanth's Resume"
+              />
+              <button
+                onClick={() => setShowResume(false)}
+                className="absolute top-4 right-4 text-red-500 text-2xl"
+              >
+                &times;
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

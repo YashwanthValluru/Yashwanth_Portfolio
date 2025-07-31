@@ -26,7 +26,7 @@ const ExperienceSection = () => {
             </span>
           </h2>
           <p className="text-lg text-yellow-200 max-w-2xl mx-auto">
-            My journey in DevOps, Cloud, and Machine Learning
+            My journey in DevOps and Cloud
           </p>
         </motion.div>
 

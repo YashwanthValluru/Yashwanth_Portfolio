@@ -19,8 +19,19 @@ import vpc from "./tech-logos/VPC.svg"
 import cdk from "./tech-logos/CDK.svg"
 import awsiam from "./tech-logos/aws-iam.svg"
 import docker from "./tech-logos/docker.svg"
-
-
+import tensorflow from "./tech-logos/tensorflow.svg"
+import np from "./tech-logos/numpy.svg"
+import keras from "./tech-logos/keras.svg"
+import sklearn from "./tech-logos/scikit-learn.svg"
+import pd from "./tech-logos/pandas.svg"
+import matploitlib from "./tech-logos/matplotlib.svg"
+import bash from "./tech-logos/bash.svg"
+import sql from "./tech-logos/sql.svg"
+import postman from "./tech-logos/postman.svg"
+import jira from "./tech-logos/jira.svg"
+import prometheus from "./tech-logos/prometheus.svg"
+import grafana from "./tech-logos/grafana.svg"
+import sonarqube from "./tech-logos/sonarqube.svg"
 
 
 export const mockData = {
@@ -75,8 +86,8 @@ export const mockData = {
     languages: [
       { name: "Python", icon: python },
       { name: "C#", icon: csharp},
-      { name: "SQL", icon: "" },
-      { name: "Bash", icon: "" }
+      { name: "SQL", icon: sql },
+      { name: "Bash", icon: bash }
     ],
     cloud: [
       { name: "AWS IAM", icon: awsiam },
@@ -87,7 +98,7 @@ export const mockData = {
       { name: "ECR", icon: ecr },
       { name: "EKS", icon: eks },
       { name: "VPC", icon: vpc },
-      { name: "Cloudwatch", icon: cw  },
+      { name: "Cloudwatch", icon: cw },
       { name: "CDK", icon: cdk },
       { name: "Cloudformation", icon: cf }
     ],
@@ -99,19 +110,19 @@ export const mockData = {
       { name: "Terraform", icon: tf }
     ],
     mlData: [
-      { name: "TensorFlow", icon: "🧠" },
-      { name: "Keras", icon: "🤖" },
-      { name: "Scikit-learn", icon: "📊" },
-      { name: "Pandas", icon: "🐼" },
-      { name: "Matplotlib", icon: "📈" },
-      { name: "OpenCV", icon: "👁️" }
+      { name: "TensorFlow", icon: tensorflow },
+      { name: "Keras", icon: keras },
+      { name: "Scikit-learn", icon: sklearn },
+      { name: "Pandas", icon: pd },
+      { name: "Matplotlib", icon: matploitlib },
+      { name: "Numpy", icon: np }
     ],
     tools: [
-      { name: "Postman", icon: "📮" },
-      { name: "SonarQube", icon: "🔍" },
-      { name: "Jira", icon: "📋" },
-      { name: "Prometheus", icon: "📊" },
-      { name: "Grafana", icon: "📈" }
+      { name: "Postman", icon: postman },
+      { name: "SonarQube", icon: sonarqube },
+      { name: "Jira", icon: jira },
+      { name: "Prometheus", icon: prometheus },
+      { name: "Grafana", icon: grafana }
     ]
   },
 
@@ -148,9 +159,10 @@ export const mockData = {
         "Geospatial data processing"
       ],
       technologies: ["Python", "GDAL", "GeoPandas", "OpenCV", "ChangeFormer"],
-      demoVideo: "/api/placeholder/600/400",
-      githubLink: "https://github.com/yashwanth-valluru/forest-detection",
-      liveDemo: "https://forest-detection-demo.com"
+      // *** IMPORTANT: Replace "YOUR_YOUTUBE_VIDEO_ID_HERE" with your actual YouTube video ID ***
+      youtubeVideoId: "yxt5XgFz-YQ", // For embedding the video in the iframe
+      githubLink: "https://github.com/YashwanthValluru/Forest_Deforestation_Analysis",
+      liveDemo: "https://drive.google.com/file/d/15Ln_AVcfEiciQHL6yWiW9UXQibyxbLvd/view?usp=drive_link" // For the "Live Demo" button
     },
     {
       id: 2,
@@ -163,36 +175,37 @@ export const mockData = {
         "High accuracy disease classification"
       ],
       technologies: ["Keras", "TensorFlow", "VGG16", "ResNet50", "OpenCV"],
-      demoVideo: "/api/placeholder/600/400",
-      githubLink: "https://github.com/yashwanth-valluru/wheat-disease-detection",
-      liveDemo: "https://wheat-disease-demo.com"
+      youtubeVideoId: null, // Set to null or your video ID if this project also has one
+      githubLink: "",
+      liveDemo: ""
     }
   ],
 
   // Certifications and Achievements
   certifications: [
-    { 
-      name: "AWS Academy ML Foundations", 
-      icon: "🏆",
+    {
+      name: "AWS Cloud Practitioner",
+      icon: aws,
       issuer: "Amazon Web Services",
-      year: "2024",
-      credentialId: "AWS-ML-2024-001",
-      link: "https://aws.amazon.com/academy/"
-    },
-    { 
-      name: "AWS Cloud Practitioner", 
-      icon: "☁️",
-      issuer: "Amazon Web Services",
-      year: "2024",
-      credentialId: "AWS-CP-2024-002",
+      year: "2025",
+      credentialId: "8D79F3AVR7",
       link: "https://aws.amazon.com/certification/"
     },
-    { 
-      name: "Prometheus & Grafana Certified", 
-      icon: "📊",
-      issuer: "CNCF",
-      year: "2024",
-      credentialId: "CNCF-PG-2024-003"
+    {
+      name: "AWS Academy ML Foundations",
+      icon: aws,
+      issuer: "Amazon Web Services Training and Certification",
+      year: "2023",
+      credentialId: "86e8c407-c517-437b-9705-21aa1c2706c5",
+      link: "https://www.credly.com/earner/earned/badge/86e8c407-c517-437b-9705-21aa1c2706c5"
+    },
+    {
+      name: "AWS Academy Graduate - AWS Academy Cloud Foundations",
+      icon: aws,
+      issuer: "Amazon Web Services Training and Certification",
+      year: "2023",
+      credentialId: "ee7f25f4-07b0-4346-875a-d4b04da38686",
+      link: "https://www.credly.com/earner/earned/badge/ee7f25f4-07b0-4346-875a-d4b04da38686"
     },
   ],
 
@@ -215,12 +228,6 @@ export const mockData = {
       value: "8.55 CGPA",
       icon: "⭐"
     },
-    {
-      title: "Project Innovation Award",
-      description: "Recognition for outstanding project work",
-      value: "Gold Medal",
-      icon: "🏅"
-    }
   ],
 
   // Leadership
